@@ -31,7 +31,7 @@ jobs:
   build-and-push-image:
     needs: test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: "github.ref == 'refs/heads/main'"
 
     steps:
       - uses: actions/checkout@v2
@@ -62,7 +62,7 @@ jobs:
       - name: Deploy to EC2 via Docker Compose
         run: |
           ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
-          cd /home/${{ secrets.SERVER_USER }}/backend
-          docker compose pull
-          docker compose up -d
+            cd /home/${{ secrets.SERVER_USER }}/backend
+            docker compose pull
+            docker compose up -d
           EOF
