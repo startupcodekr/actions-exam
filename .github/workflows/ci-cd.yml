@@ -3,10 +3,10 @@ name: Node.js CI/CD
 on:
   push:
     branches:
-      - actions-2
+      - main
   pull_request:
     branches:
-      - actions-2
+      - main
 
 jobs:
   test:
@@ -31,7 +31,7 @@ jobs:
   build-and-push-image:
     needs: test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/actions-2'
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - uses: actions/checkout@v2
